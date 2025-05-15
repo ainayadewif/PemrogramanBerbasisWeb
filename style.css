@@ -1,0 +1,45 @@
+body {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: large;
+}
+
+p {
+  margin: 0 52px;
+  font-size: 20px;
+  text-align: center;
+}
+
+div {
+  background-color: bisque;
+  height: 250px;
+  border: 1px solid black;
+}
+
+.teras {
+  background-color: blueviolet;
+  height: 200px;
+  width: 100%;
+  display: flex;
+  justify-content: left;
+  text-align: center;
+}
+
+.taman {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  background-color: chartreuse;
+}
+
+.kolam {
+  background-color: cornflowerblue;
+  width: 100%;
+  height: 150px;
+}
+
+.garasi {
+  background-color: crimson;
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
