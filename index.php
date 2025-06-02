@@ -30,6 +30,7 @@
           <td><a href="contact.html">📞 Contact</a></td>
           <td><a href="service.html">🚌 Service</a></td>
           <td><a href="login.html">🔑 Login</a></td>
+          <td><a href="datamahasiswa.php">💌 Data</a></td>
         </tr>
       </table>
       <h1>
