@@ -1,25 +1,10 @@
 <?php
 
-    $koneksi = mysqli_connect("localhost","root","root","informatik");
 
-    if(!$koneksi)
-    {
-        die('Koneksi Gagal'.mysqli_connect_error());
-    }
-    $result = mysqli_query($koneksi,"SELECT * FROM mahasiswa");
-    
-   
+    require 'function.php';
 
-    //mysqli_fetch_row()
-    //mysqli_fetch_assoc()
-    //mysqli_fetch_array()
-    //mysqli_fetch_object()
-
-    $mhs = mysqli_fetch_row($result);
-
-    var_dump($mhs[1]);
-
-
+    $query = "SELECT * FROM mahasiswa";
+    $rows = tampildata($query);
 
 
 ?>
@@ -58,6 +43,18 @@
             <th>Jurusan</th>
             <th>Alamat</th>
         </tr>
+        <?php
+        $i = 1;
+        foreach($rows as $mhs) { ?>
+        <tr>
+            <td><?= $i ?></td>
+            <td><img src="images/<?= $mhs["foto"]?>" alt="<?= $mhs["foto"]?>" width="170px" /></td>
+            <td><?= $mhs["nama"]?></td>
+            <td><?= $mhs["nim"]?></td>
+            <td><?= $mhs["jurusan"]?></td>
+            <td><?= $mhs["alamat"]?></td>
+        </tr>
+        <?php $i++; } ?>
     </table>
     </center>
     
