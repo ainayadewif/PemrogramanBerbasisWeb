@@ -34,25 +34,33 @@
         </tr>
       </table>
     <h1>Data Mahasiswa</h1>
+    <a href="tambahdata.php"><button style=" background-color: green; cursor: pointer; margin-bottom: 12px;">Tambah Data</button></a>
 
     <table border="1" cellspacing="0" cellpadding="10px">
         <tr>
             <th>No</th>
+            <th>Foto</th>
             <th>Nama</th>
             <th>NIM</th>
             <th>Jurusan</th>
             <th>Alamat</th>
+            <th>Aksi</th>
+
         </tr>
         <?php
         $i = 1;
         foreach($rows as $mhs) { ?>
         <tr>
             <td><?= $i ?></td>
-            <td><img src="images/<?= $mhs["foto"]?>" alt="<?= $mhs["foto"]?>" width="170px" /></td>
+            <td><img src="images/mhs/<?= $mhs["foto"]?>" alt="<?= $mhs["foto"]?>" width="170px" /></td>
             <td><?= $mhs["nama"]?></td>
             <td><?= $mhs["nim"]?></td>
             <td><?= $mhs["jurusan"]?></td>
             <td><?= $mhs["alamat"]?></td>
+            <td>
+                <a href="hapusdata.php/?id=<?php $mhs["id"] ?>">Hapus</a>
+                <a href="ubahdata.php/?id=<?php $mhs["id"] ?>">Edit</a>
+            </td>
         </tr>
         <?php $i++; } ?>
     </table>
