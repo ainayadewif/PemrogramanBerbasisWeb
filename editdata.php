@@ -2,16 +2,24 @@
 
 require 'function.php';
 
+$id = $_GET["id"];
+
+$query = "SELECT * FROM mahasiswa WHERE id= $id";
+
+$mhs = tampildata($query)[0];
+
+var_dump($mhs["nama"]);
+
 if(isset($_POST['submit']))
 {
-    if (tambahdata($_POST) > 0 )
+    if (editdata($_POST, $id) > 0 )
     {
-        echo "<script> alert('Data Berhasil Ditambahkan');
-            document.location.href='datamahasiswa.php'</script>";
+        echo "<script> alert('Data Berhasil Diedit');
+            document.location.href='../datamahasiswa.php'</script>";
     }else
     {
-        echo "<script> alert('Gagal');
-            document.location.href='datamahasiswa.php'</script>";
+        echo "<script> alert('Data Gagal diedit');
+            document.location.href='../datamahasiswa.php'</script>";
     }
     
     
@@ -62,12 +70,12 @@ function tambahdata($data)
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tambah Data</title>
+    <title>Edit Data</title>
 </head>
 <body>
-    <h1>Tambah Data Mahasiswa</h1>
+    <h1>Edit Data Mahasiswa</h1>
 
-    <div class="card" style="width: 18rem; background-color:aqua;">
+    <!-- <div class="card" style="width: 18rem; background-color:aqua;">
     <div class="card-body">
     <form action="" method="post" enctype="multipart/form-data">
   <div class="mb-3">
@@ -83,22 +91,23 @@ function tambahdata($data)
     <input type="checkbox" class="form-check-input" id="exampleCheck1">
     <label class="form-check-label" for="exampleCheck1">Check me out</label>
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary">Edit</button>
 </form>
 </div>
-</div>
-    <!-- <form action="" method="post" enctype="multipart/form-data">
+</div> -->
+    <form action="" method="post" enctype="multipart/form-data">
+        <input type="hidden" name = "id">
         <label for="name">Nama : </label>
-        <input type="text" name="nama" id="name" required><br>
+        <input type="text" name="nama" id="name" required value="<?= $mhs["nama"]?>"/><br>
         <label for="nim">NIM : </label>
-        <input type="text" name="nim" id="nim" required><br>
+        <input type="text" name="nim" id="nim" required value="<?= $mhs["nim"]?>"/><br>
         <label for="jurusan">Jurusan : </label>
-        <input type="text" name="jurusan" id="jurusan" required><br>
+        <input type="text" name="jurusan" id="jurusan" required value="<?= $mhs["jurusan"]?>"/><br>
         <label for="alamat">Alamat : </label>
-        <input type="text" name="alamat" id="alamat" required><br>
+        <input type="text" name="alamat" id="alamat" required value="<?= $mhs["alamat"]?>"/><br>
         <label for="jurusan">Upload Foto : </label>
         <input type="file" name="foto"><br>
         <button type="submit" name="submit">Tambah</button>
-    </form> -->
+    </form>
 </body>
 </html>

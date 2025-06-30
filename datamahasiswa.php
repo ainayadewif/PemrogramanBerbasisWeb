@@ -58,8 +58,8 @@
             <td><?= $mhs["jurusan"]?></td>
             <td><?= $mhs["alamat"]?></td>
             <td>
-                <a href="hapusdata.php/?id=<?php $mhs["id"] ?>">Hapus</a>
-                <a href="ubahdata.php/?id=<?php $mhs["id"] ?>">Edit</a>
+                <a href="hapusdata.php/?id=<?php echo $mhs["id"] ?>" onclick="return confirm('yakin?')">Hapus</a>
+                <a href="editdata.php/?id=<?php echo $mhs["id"] ?>">Edit</a>
             </td>
         </tr>
         <?php $i++; } ?>
