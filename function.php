@@ -67,4 +67,42 @@ function editdata($data, $id)
 }
 }
 
+function register($data)
+{
+    global $koneksi;
+
+    $username = trim($data["username"]);
+    $password1 = trim($data["password1"]);
+    $password2 = trim($data["password2"]);
+
+    $queryusername = "SELECT id from user WHERE username = username";
+
+    $username_check = mysqli_query($koneksi,$queryusername);
+
+    if(mysqli_num_rows($username_check) > 0)
+    {
+        return "Username sudah ada!";
+    }
+    if(!preg_match('/^[a-zA-Z0-9._-]+$/', $username))
+    {
+        return "Username tidak valid";
+    }
+    if($password1 !== $password2 )
+    {
+        return "Konfirmasi password salah!";
+    }
+
+    $hash_password = password_hash($password1,PASSWORD_DEFAULT);
+
+    $query_insert = "INSERT into user (username, password) VALUES ('$username', '$hash_password')";
+
+    if(mysqli_query($koneksi, $query_insert))
+    {
+        return "Register Berhasil";
+    }else
+    {
+        return "Gagal". mysqli_error($koneksi);
+    }
+}
+
 ?>

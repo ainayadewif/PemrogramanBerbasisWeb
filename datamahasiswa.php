@@ -1,5 +1,12 @@
 <?php
 
+    session_start();
+
+    if(!isset($_SESSION["login"]))
+    {
+        header("Location: login.php");
+        exit;
+    }
 
     require 'function.php';
 
@@ -29,8 +36,9 @@
           <td><a href="aboutus.html">📘 About Us</a></td>
           <td><a href="contact.html">📞 Contact</a></td>
           <td><a href="service.html">🚌 Service</a></td>
-          <td><a href="login.html">🔑 Login</a></td>
+          <td><a href="login.php">🔑 Login</a></td>
           <td><a href="datamahasiswa.php">💌 Data</a></td>
+          <td><a href="logout.php">🍗 Logout</a></td>
         </tr>
       </table>
     <h1>Data Mahasiswa</h1>
